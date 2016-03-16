@@ -1,8 +1,7 @@
 package com.rana.ecom.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,25 +15,40 @@ public class Product implements Serializable{
 	private static final long serialVersionUID = 931307931226407811L;
 	@Id
 	private String id;
-	private long sku;
+	private String sku;
 	private String name;
 	private String description;
 	private String type;
 	private String category;
 	private String navigationPath;
-	private String status;
-	private Map<String, Object> attributes;
+	private String status;	
+	private Date createDate;
+	private Date updateDate;
 	
+	
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public long getSku() {
+	public String getSku() {
 		return sku;
 	}
-	public void setSku(long sku) {
+	public void setSku(String sku) {
 		this.sku = sku;
 	}
 	public String getName() {
@@ -73,12 +87,7 @@ public class Product implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Map<String, Object> getAttributes() {
-		if(attributes == null){
-			attributes = new HashMap<String, Object>();
-		}
-		return attributes;
-	}
+	
 	
 	
 	
