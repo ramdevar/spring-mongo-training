@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rana.ecom.constant.IEcomConstant;
 import com.rana.ecom.dao.IEcomDao;
-import com.rana.ecom.model.Post;
 import com.rana.ecom.model.Product;
 import com.rana.ecom.model.ServiceResponse;
 
@@ -26,12 +25,6 @@ public class EcomController {
 	IEcomDao ecomDao;
 	
 	
-	@RequestMapping(value = "/getposts", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody List<Post> getPosts(){
-		
-		List<Post> posts = ecomDao.getPostsFromDB();
-		return posts;
-	}
 	
 	@RequestMapping(value = "/getitembyid/{id}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody ServiceResponse getItemById(@PathVariable String id){
