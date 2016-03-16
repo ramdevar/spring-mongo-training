@@ -47,6 +47,20 @@ public class EcomController {
 		return res;
 	}
 	
+	@RequestMapping(value = "/getitembycat/{cat}/{skip}/{limit}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody ServiceResponse getItemById(@PathVariable String cat, @PathVariable int skip, @PathVariable int limit){
+		ServiceResponse res = new ServiceResponse();
+		try {
+			List<Product> products = ecomDao.getProductByCategory(cat, skip, limit);
+			res.setObj(products);
+			res.setStatus(IEcomConstant.SUCCESS);
+		} catch (Exception e) {
+			res.setStatus(IEcomConstant.FAILED);
+			res.setMsg(e.getMessage());
+		}
+		return res;
+	}
+	
 	
 	
 	
