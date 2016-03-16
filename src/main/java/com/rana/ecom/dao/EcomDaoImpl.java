@@ -52,6 +52,17 @@ public class EcomDaoImpl implements IEcomDao {
 		return product;
 	}
 
+	@Override
+	public int insertProduct(Product product) throws Exception {
+		try {
+			dbManager.getMongoTemplate().insert(product);
+		} catch (Exception e) {			
+			e.printStackTrace();
+			throw e;
+		}
+		return 0;
+	}
+
 	
 
 }
