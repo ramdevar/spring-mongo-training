@@ -12,5 +12,7 @@ public interface IEcomDao {
 	public Product getProductById(String id) throws Exception;
 	
 	public int insertProduct(Product product) throws Exception;
+	
+	public Product getProductByName(String name) throws Exception;
 
 }
