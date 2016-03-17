@@ -52,6 +52,21 @@ public class EcomDaoImpl implements IEcomDao {
 		return product;
 	}
 
+	@Override
+	public Product getProductByName(String name) throws Exception {
+		Product product = null;
+		Query qry = new Query();
+		qry.addCriteria(Criteria.where("name").is(name));
+		
+		try {
+			product = dbManager.getMongoTemplate().findOne(qry, Product.class);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			throw e;
+		}
+		return product;
+	}
 	
 
 }
