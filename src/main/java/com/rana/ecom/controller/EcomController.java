@@ -76,7 +76,19 @@ public class EcomController {
 	}
 	
 	
-	
+	@RequestMapping(value = "/getitembyname/{name}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody ServiceResponse getItemByName(@PathVariable String name){
+		ServiceResponse res = new ServiceResponse();
+		try {
+			Product product = ecomDao.getProductByName(name);
+			res.setObj(product);
+			res.setStatus(IEcomConstant.SUCCESS);
+		} catch (Exception e) {
+			res.setStatus(IEcomConstant.FAILED);
+			res.setMsg(e.getMessage());
+		}
+		return res;
+	}
 	
 	
 
